@@ -2,6 +2,7 @@
 - name: base system configurations for linux servers
   hosts: prod
   become: true
+  gather_facts: false
   tasks:
   - name: create admin user
     user:
@@ -20,7 +21,10 @@
     package: 
       name: ntp
       state: present
-
+  - name: start ntp service
+    service:
+      name: ntpd
+      state: started
   
 
 ...
