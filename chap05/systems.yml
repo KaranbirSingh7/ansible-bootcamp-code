@@ -25,6 +25,19 @@
     service:
       name: ntpd
       state: started
-  
 
+- name: configuring app server
+  hosts: app
+  gather_facts: false
+  become: true
+  tasks:
+  - name: create deploy user
+    user:
+      name: deploy
+      uid: 503
+      state: present
+  - name: install git
+    package:
+      name: git
+      state: present
 ...
