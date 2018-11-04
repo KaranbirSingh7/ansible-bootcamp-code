@@ -1,0 +1,39 @@
+- name: Deploy static html site
+  hosts: lb
+  become: true
+  gather_facts: false
+  tasks:
+  - name: add nginx repo
+    yum:
+      name: epel-release 
+      state: present
+
+    # yum_repository:
+    #   name:  nginx
+    #   description: Centos Nginx repo 
+    #   state: present
+    #   enabled: true
+    #   gpgcheck: no
+    #   baseurl: http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+      #  http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+      # http://nginx.org/packages/centos/6/x86_64/
+  
+  - name: install nginx service
+    yum:
+      name: nginx
+      state: present
+
+  - name: start nginx service
+    service:
+      name: nginx
+      state: started
+
+  - name: install git
+    package:
+      name: git
+      state: present
+
+  - name: download repo
+    git: 
+      repo: https://github.com/schoolofdevops/html-sample-app.git
+      dest: /usr/share/nginx/html/app
