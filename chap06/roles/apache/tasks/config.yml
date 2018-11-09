@@ -1,0 +1,9 @@
+---
+  - name: copy apache configurations
+    copy:
+      src: httpd.conf
+      dest: /etc/http.conf
+      owner: root
+      group: root
+      mode: 0644
+    notify: restart apache service

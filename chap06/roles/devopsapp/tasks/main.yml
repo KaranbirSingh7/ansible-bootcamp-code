@@ -1,0 +1,3 @@
+---
+# tasks file for devopsapp
+  - import_tasks: release.yml

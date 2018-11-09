@@ -1,0 +1,9 @@
+---
+  - name: Install devops demo app
+    hosts: app
+    become: true
+    gather_facts: false
+    roles:
+    - apache
+    - devopsapp
+...

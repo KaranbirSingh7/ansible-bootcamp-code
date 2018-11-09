@@ -1,0 +1,28 @@
+---
+  - name: remove directory if exists
+    shell: "rm -rf /opt/app/release/*"
+
+  - name: create app directory
+    file:
+      path: "/opt/app/release"
+      state: directory
+
+  - name: unzip app releases
+    unarchive:
+      remote_src: true
+      src: "http://github.com/devopsdemoapps/devops-demo-app/archive/{{item}}.zip"
+      dest: "/opt/app/release/"
+    with_items:
+    - '1.1'
+    - '1.2'
+
+  - name: create symlink to app
+    notify: restart apache service
+    file:
+      src: "/opt/app/release/devops-demo-app-{{item}}"
+      dest: "/var/www/html/app"
+      state: link
+    with_items:
+    - '1.1'
+    # - '1.2'
+...   
