@@ -1,0 +1,16 @@
+---
+  - name: register variable example
+    hosts: local
+    gather_facts: false
+    tasks:
+    - name: run a shell command and store its result
+      shell: "ls -l /"
+      register: result
+
+    - name: print registered result
+      debug: 
+        var: result 
+
+    - name: execute this conditionally
+      command: uptime
+      when: result.rc == 0

@@ -1,2 +1,17 @@
 ---
 # defaults file for frontend
+  app: 
+    version: 1.5
+    env: LOCALDEV
+    
+  fav:
+    color: black
+    fruit: apple
+    car: tesla
+    laptop: macbook
+
+  dbconn:
+    hostname: localhost
+    username: root
+    password: changeme
+    dbname: devopsdemo
