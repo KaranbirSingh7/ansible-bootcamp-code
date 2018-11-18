@@ -1,5 +1,11 @@
 ---
-
+  system:
+    packages:
+    - ntp
+    - tree
+    - vim
+    
+    
   users:
     admin:
       uid: 5001

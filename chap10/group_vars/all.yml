@@ -1,0 +1,19 @@
+--- 
+  app:
+    version: 1.4
+    env: prod
+
+  users:
+    admin:
+      uid: 5001
+      shell: /bin/bash
+      home: /home/admin
+      state: present
+    dojo:
+      state: absent
+      
+  systems: 
+    packages: 
+      - ntp 
+      - tree 
+      - vim

@@ -10,3 +10,22 @@
     address: 192.168.61.13:80
 
   haproxy_backend_httpchk: ""
+  haproxy_socket: /var/run/haproxy.sock
+  # mysql_user_home: /home/devops
+  # mysql_user_name: devops
+  # mysql_user_password: devops
+
+  # mysql_root_home: /root
+  # mysql_root_username: root
+  
+  mysql_root_password: Foobar123
+
+  mysql_databases:
+  - name: devopsdemo
+
+  mysql_users:
+  - name: devops
+    host: "%"
+    password: Foobar123  
+    priv: "devopsdemo.*:ALL"
+  mysql_bind_address: "0.0.0.0"
